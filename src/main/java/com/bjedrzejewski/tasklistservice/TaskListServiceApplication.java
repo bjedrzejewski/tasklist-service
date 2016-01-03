@@ -22,7 +22,11 @@ public class TaskListServiceApplication extends Application<TaskListServiceConfi
     @Override
     public void run(TaskListServiceConfiguration configuration,
                     Environment environment) {
-        // nothing to do yet
+        // register resource now
+        final TaskListResource resource = new TaskListResource(
+                configuration.getTemplate()
+        );
+        environment.jersey().register(resource);
     }
 
 }
