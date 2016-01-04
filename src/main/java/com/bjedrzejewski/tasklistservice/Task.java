@@ -1,7 +1,6 @@
 package com.bjedrzejewski.tasklistservice;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.validator.constraints.Length;
 
 /**
  * Created by bartoszjedrzejewski on 03/01/2016.
@@ -9,15 +8,15 @@ import org.hibernate.validator.constraints.Length;
 public class Task {
     private long id;
 
-    private String name;
+    private String content;
 
     public Task() {
         // Jackson deserialization
     }
 
-    public Task(long id, String name) {
+    public Task(long id, String content) {
         this.id = id;
-        this.name = name;
+        this.content = content;
     }
 
     @JsonProperty
@@ -26,7 +25,7 @@ public class Task {
     }
 
     @JsonProperty
-    public String getName() {
-        return name;
+    public String getContent() {
+        return content;
     }
 }
