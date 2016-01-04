@@ -11,7 +11,7 @@ public class TaskListServiceApplication extends Application<TaskListServiceConfi
 
     @Override
     public String getName() {
-        return "chat-service-application";
+        return "task-list-service";
     }
 
     @Override
