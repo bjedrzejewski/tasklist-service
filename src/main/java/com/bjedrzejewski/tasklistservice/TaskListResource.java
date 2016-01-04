@@ -20,11 +20,11 @@ import java.util.concurrent.atomic.AtomicLong;
 @Path("/task-list")
 @Produces(MediaType.APPLICATION_JSON)
 public class TaskListResource {
-    private final String template;
+    private final int maxLength;
     private final AtomicLong counter;
 
-    public TaskListResource(String template) {
-        this.template = template;
+    public TaskListResource(int maxLength) {
+        this.maxLength = maxLength;
         this.counter = new AtomicLong();
     }
 
@@ -47,7 +47,7 @@ public class TaskListResource {
                     continue;
                 }
                 if(line.contains(query)) {
-                    tasks.add(new Task(counter.getAndIncrement(), line));
+                    tasks.add(new Task(counter.getAndIncrement(), line.substring(0, maxLength)));
                 }
                 processedLines++;
             }

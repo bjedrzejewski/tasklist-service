@@ -24,7 +24,7 @@ public class TaskListServiceApplication extends Application<TaskListServiceConfi
                     Environment environment) {
         // register resource now
         final TaskListResource resource = new TaskListResource(
-                configuration.getTemplate()
+                configuration.getMaxLength()
         );
         environment.jersey().register(resource);
     }

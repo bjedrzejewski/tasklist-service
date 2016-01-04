@@ -6,15 +6,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class TaskListServiceConfiguration extends Configuration {
     @NotEmpty
-    private String template;
+    private int maxLength;
 
     @JsonProperty
-    public String getTemplate() {
-        return template;
+    public int getMaxLength() {
+        return maxLength;
     }
 
     @JsonProperty
-    public void setTemplate(String template) {
-        this.template = template;
+    public void setMaxLength(int maxLength) {
+        this.maxLength = maxLength;
     }
 }
