@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class TaskListServiceConfiguration extends Configuration {
-    @NotEmpty
+
     private int maxLength;
 
     @JsonProperty

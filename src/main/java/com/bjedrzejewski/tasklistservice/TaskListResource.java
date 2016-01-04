@@ -47,7 +47,7 @@ public class TaskListResource {
                     continue;
                 }
                 if(line.contains(query)) {
-                    tasks.add(new Task(counter.getAndIncrement(), line.substring(0, maxLength)));
+                    tasks.add(new Task(counter.getAndIncrement(), line.substring(0, Math.min(line.length(), maxLength))));
                 }
                 processedLines++;
             }
