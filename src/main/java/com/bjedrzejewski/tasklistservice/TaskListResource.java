@@ -30,7 +30,7 @@ public class TaskListResource {
 
     @GET
     @Timed
-    public List<Task> sayHello(@QueryParam("contains") Optional<String> contains) {
+    public List<Task> listTasks(@QueryParam("contains") Optional<String> contains) {
         List<Task> tasks = new ArrayList<Task>();
 
         String query = contains.or("");
