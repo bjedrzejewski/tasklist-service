@@ -2,6 +2,7 @@ package com.bjedrzejewski.tasklistservice;
 
 import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
+import com.google.common.io.CharStreams;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -36,20 +37,16 @@ public class TaskListResource {
         String query = contains.or("");
 
         try {
-            String line;
             Process p = Runtime.getRuntime().exec("ps -e");
             BufferedReader input =
                     new BufferedReader(new InputStreamReader(p.getInputStream()));
-            int processedLines = 0;
-            while ((line = input.readLine()) != null) {
-                if(processedLines == 0){
-                    processedLines++;
-                    continue;
-                }
+            //Dropwizard comes with google guava
+            List<String> lines = CharStreams.readLines(input);
+            for(int i = 1; i < lines.size(); i++) {
+                String line = lines.get(i);
                 if(line.contains(query)) {
                     tasks.add(new Task(counter.getAndIncrement(), line.substring(0, Math.min(line.length(), maxLength))));
                 }
-                processedLines++;
             }
             input.close();
         } catch (Exception err) {
